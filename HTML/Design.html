@@ -76,7 +76,7 @@
     </style>
 </head>
 <body style="">
-    // HTML-Code
+    <!-- HTML-Code -->
     <h1>Tom's Einkaufliste</h1>
     <img src="https://lerneprogrammieren.de/wp-content/uploads/einkaufswagen.png" height="35px" />
     <div>
@@ -113,7 +113,6 @@
           li.addEventListener("click", toggleDone); //fügt dem li-Element einen EventListener hinzu
           function toggleDone() {
               li.classList.toggle("done"); //fügt dem li-Element die Klasse "done" hinzu oder entfernt sie
-              sortList(ul);
 
           }
 
@@ -126,6 +125,7 @@
           function deleteListItem() {
               li.classList.add("delete"); //fügt dem li-Element die Klasse "delete" hinzu
               li.splice(li, 1); //löscht das li-Element
+
           }
       }
 
@@ -135,7 +135,7 @@
               erstellenEintrag();
           }
       }
-
+      /*
       function sortList(ul) {
           var new_ul = ul.cloneNode(false);
 
@@ -158,6 +158,8 @@
           ul.parentNode.replaceChild(new_ul, ul);
 
       }
+
+       */
 
     </script>
 </body>
