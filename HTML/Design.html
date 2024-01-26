@@ -95,6 +95,7 @@
       var input = document.getElementById("benutzerInput");
       var ul = document.querySelector("ul");
       var item = document.getElementsByTagName("li");
+      var counter = 0;
 
 
         enterButton.addEventListener("click", testInputLength); //fügt Element der Liste durch Drücken des Buttons hinzu
@@ -108,11 +109,18 @@
 
           var li = document.createElement("li"); //erstellt ein neues li-Element
           li.appendChild(document.createTextNode(input.value)); //fügt dem li-Element den Text aus dem Input-Feld hinzu
-          ul.appendChild(li); //fügt das li-Element der ul-Liste hinzu#
+          if(counter == 0) {
+              ul.appendChild(li); //fügt das li-Element der ul-Liste hinzu
+              counter++;
+          } else {
+              ul.insertBefore(li, ul.childNodes[0]); //fügt das li-Element der ul-Liste hinzu
+          }
           input.value = ""; //leert das Input-Feld
           li.addEventListener("click", toggleDone); //fügt dem li-Element einen EventListener hinzu
           function toggleDone() {
               li.classList.toggle("done"); //fügt dem li-Element die Klasse "done" hinzu oder entfernt sie
+              ul.removeChild(li); //löscht das li-Element aus der Liste
+              ul.appendChild(li); //fügt das li-Element der Liste hinzu
 
           }
 
@@ -135,31 +143,7 @@
               erstellenEintrag();
           }
       }
-      /*
-      function sortList(ul) {
-          var new_ul = ul.cloneNode(false);
 
-          // Add all lis to an array
-          var lis = [];
-          for(var i = ul.childNodes.length; i--;){
-              if(ul.childNodes[i].nodeName === 'LI')
-                  lis.push(ul.childNodes[i]);
-          }
-
-          // Sort the lis in descending order
-          lis.sort(function(a, b){
-              return parseInt(b.childNodes[0].data, 10) -
-                  parseInt(a.childNodes[0].data, 10);
-          });
-
-          // Add them into the ul in order
-          for(var i = 0; i < lis.length; i++)
-              new_ul.appendChild(lis[i]);
-          ul.parentNode.replaceChild(new_ul, ul);
-
-      }
-
-       */
 
     </script>
 </body>
